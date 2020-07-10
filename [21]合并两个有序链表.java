@@ -29,21 +29,23 @@ class Solution {
         } else if (l2 == null) {
             return l1;
         }
-        ListNode l4 = new ListNode(0);
-        ListNode l3 = l4;
+
+        ListNode lnew = new ListNode(-1);
+        ListNode ltemp = lnew;
 
         while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                l3.next = l1 ;
-                l1 = l1.next;
-            } else {
-                l3.next = l2;
+            if (l1.val > l2.val) {
+                ltemp.next = l2;
                 l2 = l2.next;
+            } else {
+                ltemp.next = l1;
+                l1 = l1.next;
             }
-            l3 = l3.next;
+            ltemp = ltemp.next;
         }
-        l3.next = l1 == null ? l2 : l1;
-        return l4.next;
+
+        ltemp.next = l1 == null ? l2 : l1;
+        return lnew.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
