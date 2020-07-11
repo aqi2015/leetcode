@@ -27,31 +27,28 @@ class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (m == 0) {
             System.arraycopy(nums2, 0, nums1, 0, n);
-//            nums1 = nums2;
             return;
         } else if (n == 0) {
             return;
         }
-        int[] nums1_copy = new int[m];
-        System.arraycopy(nums1, 0, nums1_copy, 0, m);
 
-        int index1 = 0;
-        int index2 = 0;
-        int index3 = 0;
-        while (index1 < m && index2 < n) {
-            if (nums1_copy[index1] > nums2[index2]) {
-                nums1[index3] = nums2[index2];
-                index2++;
+        int[] copy_nums1 = new int[m];
+        System.arraycopy(nums1, 0, copy_nums1, 0, m);
+
+        int p1 = 0;
+        int p2 = 0;
+        int cp1 = 0;
+        while (cp1 < m && p2 < n) {
+            if (copy_nums1[cp1] > nums2[p2]) {
+                nums1[p1++] = nums2[p2++];
             } else {
-                nums1[index3] = nums1_copy[index1];
-                index1++;
+                nums1[p1++] = copy_nums1[cp1++];
             }
-            index3++;
         }
-        if (index1 < m) {
-            System.arraycopy(nums1_copy, index1, nums1, index1 + index2, m - index1);
+        if (cp1 < m) {
+            System.arraycopy(copy_nums1, cp1, nums1, p2 + cp1, m - cp1);
         } else {
-            System.arraycopy(nums2, index2, nums1, index1 + index2, n - index2);
+            System.arraycopy(nums2, p2, nums1, cp1 + p2, n - p2);
         }
     }
 }
