@@ -22,7 +22,7 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public boolean isAnagram (String s, String t) {
+    public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
             return false;
         }
@@ -33,9 +33,7 @@ class Solution {
             counter[t.charAt(i) - 'a']--;
         }
         for (int count : counter) {
-            if (count != 0) {
-                return false;
-            }
+            if (count != 0) return false;
         }
         return true;
     }
