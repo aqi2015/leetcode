@@ -43,10 +43,11 @@ class Solution {
         dfs(root);
         return res;
     }
+
     public void dfs(Node root) {
-        if(root == null) return;
+        if (root == null) return;
         res.add(root.val);
-        for(var child : root.children)
+        for (Node child : root.children)
             dfs(child);
     }
 }
@@ -58,11 +59,11 @@ class Solution {
         if (root == null) return output;
 
         stack.add(root);
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             Node node = stack.pollLast();
             output.add(node.val);
             Collections.reverse(node.children);
-            for(var child : node.children)
+            for (Node child : node.children)
                 stack.add(child);
         }
         return output;
