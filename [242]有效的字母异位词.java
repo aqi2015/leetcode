@@ -22,11 +22,8 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public boolean isAnagram(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
-        }
-
+    public boolean isAnagram (String s, String t) {
+        if ( s.length() != t.length()) return false;
         int[] counter = new int[26];
         for (int i = 0; i < s.length(); i++) {
             counter[s.charAt(i) - 'a']++;
@@ -36,6 +33,12 @@ class Solution {
             if (count != 0) return false;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        String s = "anagram", t = "nagaram";
+        Solution sol = new Solution();
+        System.out.println(sol.isAnagram(s, t));
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
