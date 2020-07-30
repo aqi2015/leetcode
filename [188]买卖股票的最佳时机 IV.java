@@ -33,7 +33,6 @@ public class Solution {
         if (k <= 0 || len == 0 || len == 1) return 0;
 //        if (k <= 0 || prices.length == 0 || prices.length == 1) return new int[0];
         if (k > len/2) return quickSolve(prices);
-        if (k > len) k = len;
         int[] holds = new int[k];
         int[] releases = new int[k];
         Arrays.fill(holds, Integer.MIN_VALUE);
